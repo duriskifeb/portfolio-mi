@@ -1,6 +1,6 @@
 //hero ini saya copas nggeh
-import styles from "./HeroStyles.module.css";
-import heroImg from "../assets/Design uten navn.png";
+import styles from "../component/HeroStyles.module.css";
+import heroImg from "../assets/profile.png";
 import sun from "../assets/sun.svg";
 import moon from "../assets/moon.svg";
 import twitterLight from "../assets/twitter-light.svg";
@@ -9,7 +9,7 @@ import githubLight from "../assets/github-light.svg";
 import githubDark from "../assets/github-dark.svg";
 import linkedinLight from "../assets/linkedin-light.svg";
 import linkedinDark from "../assets/linkedin-dark.svg";
-import CV from "../assets/cv.pdf";
+import CV from "..//assets/cv.pdf";
 import { useTheme } from "../common/ThemeContext";
 
 function Hero() {
@@ -37,9 +37,7 @@ function Hero() {
       </div>
       <div className={styles.info}>
         <h1>
-          Harris
-          <br />
-          Johnsen
+          Muhammad Rizky Febriyanto
         </h1>
         <h2>Frontend Developer</h2>
         <span>
