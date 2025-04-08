@@ -1,0 +1,75 @@
+.header-container {
+  margin-top: 1rem;
+  position: fixed;
+  bottom: 1rem;
+  width: 100%;
+  z-index: 10;
+  height: fit-content;
+}
+
+.navbar {
+  display: flex;
+  background-color: var(--btn-color);
+  margin: auto;
+  align-items: center;
+  gap: 2rem;
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  width: fit-content;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.nav-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.nav-icon.active {
+  /* color var sementara ya nanti di rubah kok */
+  color: var(--btn-color);
+}
+.nav-icon.inactive {
+  /* color var sementara ya nanti di rubah kok */
+  color: var(--btn-color);
+}
+
+.nav-label {
+  font-size: 0.75rem;
+}
+
+.nav-label.active {
+  color: var(--btn-color);
+}
+
+.nav-label.inactive {
+  color: var(--btn-color);
+}
+
+
+/* disini buat media layar */
+
+@media (min-width: 768px) {
+    .header-container {
+        top: 0;
+        bottom: auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-icon {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .nav-label {
+        font-size: 1.125rem;
+    }
+}
