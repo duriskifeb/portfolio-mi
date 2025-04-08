@@ -6,14 +6,22 @@ import {
   BoltIcon,
   ChatBubbleOvalLeftEllipsisIcon,
 } from "@heroicons/react/16/solid";
-import style from "../Header/HeaderStyles.modul.css";
+import styles from "../Header/HeaderStyles.module.css";
+import sun from "../../assets/sun.svg";
+import moon from "../../assets/moon.svg";
+import { useTheme } from "../../common/ThemeContext";
 
-//buat fungsi dulu deh
 function Header() {
   const [activeSection, setActiveSection] = useState("/");
-  const [isScrool, setScrool] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
-  const navItem = [
+  // Benar urutannya
+  const sunIcon = sun;
+  const moonIcon = moon;
+  const themeIcon = theme === "light" ? moonIcon : sunIcon;
+
+  const navItems = [
     { href: "/", icon: HomeIcon, label: "Home" },
     { href: "#journey", icon: BriefcaseIcon, label: "Journey" },
     { href: "#portfolio", icon: ComputerDesktopIcon, label: "Portfolio" },
@@ -21,25 +29,21 @@ function Header() {
     {
       href: "#contact",
       icon: ChatBubbleOvalLeftEllipsisIcon,
-      label: "contact",
+      label: "Contact",
     },
   ];
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      if (scrollPosition > 0) {
-        setScrool(true);
-      } else {
-        setActiveSection(false);
-      }
 
-      const sections = navItem.map((item) => item.href.replace("#", ""));
+      setIsScrolled(scrollPosition > 0);
+
+      const sections = navItems.map((item) => item.href.replace("#", ""));
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
-
-        if (section === "") continue;
+        if (!section) continue;
 
         const element = document.getElementById(section);
         if (element && scrollPosition >= element.offsetTop - 100) {
@@ -48,37 +52,50 @@ function Header() {
         }
       }
 
-      window.addEventListener("scroll", handleScroll);
-      handleScroll();
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll);
-      };
+      if (scrollPosition < 100) {
+        setActiveSection("/");
+      }
     };
-  },[]); //ini kenapa harus ada kurung array?? noted!
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <div className="header-container">
-        <nav className={`navbar ${isScrool ? "scrolled" : ""}`}>
-            {navItem.map((item)=> (
-                <Link key={item.href} href={item.href}>
-                    <div className="nav-item">
-                        <item.icon 
-                            className={`nav-icon ${
-                                activeSection === item.href ? "active" : "inactive"
-                            }`}/>
-                        <p className={`nav-label ${
-                            activeSection === item.href ? "active" : "inactive"
-                            
-                        }`}>
-                            {item.label}
-                        </p>    
-                    </div>
-                </Link>
-            ))}
-        </nav>
+    <div className={styles.headerContainer}>
+      <nav
+        className={`${styles.navbar} ${
+          isScrolled ? styles.navbarScrolled : ""
+        }`}
+      >
+        {navItems.map((item) => (
+          <a
+            key={item.href}
+            href={item.href}
+            className={`${styles.navLink} ${
+              activeSection === item.href ? styles.activeLink : ""
+            }`}
+          >
+            <div className={styles.navItem}>
+              <item.icon className={styles.navIcon} />
+              <span className={styles.navLabel}>{item.label}</span>
+            </div>
+          </a>
+        ))}
+        <div className={styles.toggleContainer}>
+          <img
+            src={themeIcon}
+            alt="Toggle Theme"
+            onClick={toggleTheme}
+            className={`${styles.themeIcon} ${
+              theme === "dark" ? styles.darkIcon : ""
+            }`}
+          />
+        </div>
+      </nav>
     </div>
   );
 }
 
-export { Header };
+export default Header;

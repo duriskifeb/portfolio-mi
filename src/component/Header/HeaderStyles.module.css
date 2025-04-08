@@ -1,0 +1,115 @@
+:root {
+  --color-pink: #ff69b4;
+  --color-gray: #808080;
+  --shadow-neutral: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --bg-invert: #ffffff;
+}
+
+.headerContainer {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+  pointer-events: none;
+}
+
+.navbar {
+  background-color: var(--bg-invert);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 transparent;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  backdrop-filter: blur(12px);
+}
+
+.navbarScrolled {
+  box-shadow: var(--shadow-neutral);
+  transform: translateY(0);
+  animation: fadeInUp 0.3s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.navLink {
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  color: var(--color-gray);
+}
+
+.navLink:hover {
+  transform: translateY(-3px);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.navIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.navLabel {
+  font-size: 0.75rem;
+  transition: color 0.3s ease;
+}
+
+.activeLink .navLabel,
+.activeLink .navIcon {
+  color: var(--color-pink);
+}
+
+.toggleContainer {
+  margin-left: 1rem;
+}
+
+/* ini buat light mode yaa */
+
+.themeIcon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  filter: brightness(0);
+}
+
+.themeIcon:hover {
+  transform: scale(1.1);
+}
+
+.darkicon {
+  filter: brightness(1) invert(1);
+}
+
+/* Responsive - hide icons on desktop, enlarge text */
+@media (min-width: 768px) {
+  .navIcon {
+    display: none;
+  }
+  .navLabel {
+    font-size: 1.125rem;
+  }
+}
