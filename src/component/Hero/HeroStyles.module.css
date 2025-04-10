@@ -1,3 +1,8 @@
+:root {
+  --btn-color: #4f46e5; /* Fallback jika belum di-set */
+  --btn-text-color: #fff;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -6,8 +11,10 @@
   gap: 3px;
   min-height: 500px;
   padding: 20px 15px;
-  margin: 0 auto;
-  max-width: 1200px;
+  margin: 60px auto 0; /* ⬅️ Tambahkan margin-top supaya turun dari Header */
+  max-width: 1400px;
+  width: 100%;
+  height: auto;
 }
 
 .colorModeContainer {
@@ -22,13 +29,30 @@
   max-width: 200px;
 }
 
+.label {
+  background: linear-gradient(to right, #fddde6, #ffe6fa);
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.labelText {
+  color: #e91e63;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.subHeading {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
 .colorMode {
   position: absolute;
   right: 10px;
   width: 25px;
-}
-
-.colorMode:hover {
   cursor: pointer;
 }
 
@@ -47,10 +71,6 @@
   justify-content: center;
 }
 
-.container span a {
-  margin: 0;
-}
-
 .container span a img {
   width: 30px;
 }
@@ -61,7 +81,7 @@
 
 .description {
   max-width: 24ch;
-  text-align: center; /* Tetap tengah di mobile */
+  text-align: center;
 }
 
 .container button {
@@ -71,7 +91,7 @@
   border-radius: 20px;
   width: 126px;
   height: 50px;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   text-align: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -87,6 +107,7 @@
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
+/* Responsif */
 @media (min-width: 800px) {
   .container {
     flex-direction: row-reverse;
@@ -97,7 +118,6 @@
   }
 
   .colorModeContainer {
-    margin-right: 0;
     margin-bottom: 0;
     justify-content: flex-end;
   }
@@ -108,17 +128,16 @@
   }
 
   .info {
-    align-items: flex-start; /* Semua elemen rata kiri di layar besar */
-    text-align: left; /* Teks rata kiri di layar besar */
+    align-items: flex-start;
+    text-align: left;
   }
 
   .description {
-    text-align: left; /* Secara khusus memastikan deskripsi rata kiri di layar besar */
-    margin-left: 0; /* Menghapus margin yang mungkin memengaruhi perataan */
+    text-align: left;
   }
 
   .container span {
-    justify-content: flex-start; /* Ikon media sosial rata kiri di layar besar */
+    justify-content: flex-start;
   }
 }
 

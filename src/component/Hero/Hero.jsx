@@ -9,6 +9,14 @@ import linkedinDark from "../../assets/linkedin-dark.svg";
 import CV from "../../assets/cv.pdf";
 import { useTheme } from "../../common/ThemeContext"; // ini masih dipakai untuk ganti icon sosmed
 
+function Label({ label }) {
+  return (
+    <div className={styles.label}>
+      <p className={styles.labelText}>{label}</p>
+    </div>
+  );
+}
+
 function Hero() {
   const { theme } = useTheme(); // hanya butuh theme saja
 
@@ -26,8 +34,10 @@ function Hero() {
         />
       </div>
       <div className={styles.info}>
-        <h1>Muhammad Rizky Febriyanto</h1>
-        <h2>Frontend Developer</h2>
+        <Label label="Sofware Engginering TUS 23" />
+        <h1 className={styles.subHeading}>Muhammad Rizky Febriyanto</h1>
+        {/* <h2>Frontend Developer</h2>  */}
+
         <span>
           <a href="https://twitter.com/" target="_blank">
             <img src={twitterIcon} alt="Twitter icon" />
