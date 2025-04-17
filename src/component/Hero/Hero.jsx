@@ -35,7 +35,7 @@ function Hero() {
       </div>
       <div className={styles.info}>
         <Label label="Sofware Engginering TUS 23" />
-        <h1 className={styles.subHeading}>Muhammad Rizky Febriyanto</h1>
+        <h1 className={styles.subHeading} style={{color: theme === "dark" ? "#fff" : "#222"}}>Muhammad Rizky Febriyanto</h1>
         {/* <h2>Frontend Developer</h2>  */}
 
         <span>

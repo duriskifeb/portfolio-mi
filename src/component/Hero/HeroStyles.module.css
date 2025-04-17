@@ -1,6 +1,11 @@
 :root {
-  --btn-color: #4f46e5; /* Fallback jika belum di-set */
-  --btn-text-color: #fff;
+  --btn-color: #d9b679; /* Fallback jika belum di-set */
+  --btn-text-color: #222;
+  --heading-color: #222;
+}
+
+[data-theme="dark"] {
+  --heading-color: #fff;
 }
 
 .container {
@@ -45,7 +50,7 @@
 .subHeading {
   font-size: 3rem;
   font-weight: 600;
-  color: #222;
+  color: var(--heading-color);
   margin-bottom: 0.5rem;
 }
 
