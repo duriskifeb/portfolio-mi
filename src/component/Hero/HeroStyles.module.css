@@ -1,5 +1,5 @@
 :root {
-  --btn-color: #d9b679; /* Fallback jika belum di-set */
+  --btn-color: #d9b679;
   --btn-text-color: #222;
   --heading-color: #222;
 }
@@ -16,7 +16,7 @@
   gap: 3px;
   min-height: 500px;
   padding: 20px 15px;
-  margin: 60px auto 0; /* ⬅️ Tambahkan margin-top supaya turun dari Header */
+  margin: 60px auto 0;
   max-width: 1400px;
   width: 100%;
   height: auto;
@@ -44,11 +44,11 @@
 .labelText {
   color: #e91e63;
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 20px;
 }
 
 .subHeading {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 600;
   color: var(--heading-color);
   margin-bottom: 0.5rem;
@@ -77,7 +77,7 @@
 }
 
 .container span a img {
-  width: 30px;
+  width: 40px;
 }
 
 .container a {
@@ -85,8 +85,9 @@
 }
 
 .description {
-  max-width: 24ch;
+  max-width: 25ch;
   text-align: center;
+  font-size: 30px;
 }
 
 .container button {
@@ -130,6 +131,7 @@
   .hero {
     max-width: 350px;
     width: 350px;
+    margin-top: -200px;
   }
 
   .info {

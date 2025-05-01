@@ -4,6 +4,7 @@ import Hero from "./component/Hero/Hero.jsx";
 import Card from "./component/Card/Card.jsx"
 
 function App() {
+
   return (
     <>
       <Header />
