@@ -1,3 +1,4 @@
+/* === ROOT & THEME VARIABLES === */
 :root {
   --btn-color: #d9b679;
   --btn-text-color: #222;
@@ -8,30 +9,31 @@
   --heading-color: #fff;
 }
 
+/* === BASE STYLES (MOBILE FIRST: < 1024px) === */
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 3px;
-  min-height: 500px;
+  gap: 20px;
   padding: 20px 15px;
   margin: 60px auto 0;
-  max-width: 1400px;
+  max-width: 1200px; /* Sedikit disesuaikan untuk konsistensi */
   width: 100%;
-  height: auto;
+  text-align: center;
 }
 
 .colorModeContainer {
-  position: relative;
-  margin-bottom: 25px;
+  /* Di mobile, container ini tidak butuh style khusus */
+  width: 100%;
   display: flex;
   justify-content: center;
-  width: 100%;
 }
 
 .hero {
   max-width: 200px;
+  height: auto;
+  width: 100%;
 }
 
 .label {
@@ -44,21 +46,20 @@
 .labelText {
   color: #e91e63;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .subHeading {
-  font-size: 5rem;
+  font-size: 2.5rem;
   font-weight: 600;
   color: var(--heading-color);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
+  line-height: 1.2;
 }
 
-.colorMode {
-  position: absolute;
-  right: 10px;
-  width: 25px;
-  cursor: pointer;
+.description {
+  font-size: 18px;
+  max-width: 40ch;
 }
 
 .info {
@@ -67,27 +68,24 @@
   gap: 15px;
   align-items: center;
   width: 100%;
-  text-align: center;
 }
 
 .container span {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   justify-content: center;
 }
 
 .container span a img {
-  width: 40px;
+  width: 35px;
+  transition: transform 200ms ease-in-out;
+}
+.container span a img:hover {
+  transform: scale(1.15);
 }
 
 .container a {
   width: fit-content;
-}
-
-.description {
-  max-width: 25ch;
-  text-align: center;
-  font-size: 30px;
 }
 
 .container button {
@@ -97,9 +95,8 @@
   border-radius: 20px;
   width: 126px;
   height: 50px;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
-  text-align: center;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
 }
@@ -113,49 +110,50 @@
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsif */
-@media (min-width: 800px) {
+/* === TABLET & DESKTOP STYLES (≥ 1024px) === */
+/* Kita gunakan satu breakpoint besar untuk perubahan layout */
+@media (min-width: 1024px) {
+  /* MENJADI SEPERTI INI: */
   .container {
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    padding: 40px 30px;
+    flex-direction: row-reverse; /* <<< HANYA BARIS INI YANG DIUBAH */
+    align-items: stretch;
+    gap: 20px;
+    padding: 50px;
+    text-align: left;
   }
 
   .colorModeContainer {
-    margin-bottom: 0;
-    justify-content: flex-end;
+    flex: 0 0 40%; /* 3. Alokasikan 40% lebar untuk kolom gambar */
+    max-width: 500px; /* Batas maksimal agar gambar tidak terlalu lebar di layar super besar */
+    position: relative; /* Dibutuhkan untuk object-fit */
   }
 
   .hero {
-    max-width: 350px;
-    width: 350px;
-    margin-top: -200px;
+    /* 4. AJAIBNYA DI SINI */
+    width: 100%;
+    height: 100%; /* Ambil 100% tinggi dari parent (.colorModeContainer) yang sudah 'diregangkan' */
+    object-fit: cover; /* Pastikan gambar mengisi ruang tanpa distorsi (akan ter-crop rapi) */
+    border-radius: 8px; /* Opsional: memberi sedikit lengkungan pada gambar */
+    max-width: none; /* Hapus batasan max-width sebelumnya */
   }
 
   .info {
+    flex: 1; /* Biarkan kolom info mengambil sisa ruang yang tersedia */
     align-items: flex-start;
-    text-align: left;
+    justify-content: center; /* Membuat konten teks terpusat secara vertikal di dalam kolomnya */
+  }
+
+  .subHeading {
+    font-size: 4.5rem;
   }
 
   .description {
+    font-size: 20px;
     text-align: left;
+    max-width: 55ch;
   }
 
   .container span {
     justify-content: flex-start;
-  }
-}
-
-@media (min-width: 1400px) {
-  .container {
-    gap: 80px;
-    padding: 50px 50px;
-  }
-
-  .hero {
-    max-width: 400px;
-    width: 400px;
   }
 }
